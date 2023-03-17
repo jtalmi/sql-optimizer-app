@@ -1,3 +1,5 @@
+import os
+
 import streamlit as st
 from streamlit_ace import st_ace
 
@@ -84,3 +86,11 @@ with right:
         auto_update=True,
         key=f"ace-{st.session_state.state}",
     )
+
+st.markdown(
+    f"""
+    <a href="{os.getenv('GITHUB_REPO')}" target="_blank">
+    <img src="{os.getenv('STAR_BADGE_URL')}" alt="Star on GitHub"></a>
+    """,
+    unsafe_allow_html=True,
+)

@@ -1,7 +1,6 @@
 from typing import Callable, Dict, Sequence
 
 from sqlfmt.api import Mode, format_string
-from sqlfmt.exception import SqlfmtError
 from sqlglot import parse_one
 from sqlglot.expressions import Select
 from sqlglot.optimizer import RULES, optimize

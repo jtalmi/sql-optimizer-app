@@ -1,5 +1,4 @@
 # SQL Optimizer Streamlit App
-
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://sql-optimizer.streamlit.app)
 
 A web app to optimize and lint SQL queries using [sqlglot](https://github.com/tobymao/sqlglot) and [sqlfmt](http://sqlfmt.com).
