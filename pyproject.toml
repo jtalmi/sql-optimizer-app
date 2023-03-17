@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "automodel"
+name = "sql-optimizer-app"
 version = "0.1.0"
 description = ""
 authors = ["Jonathan Talmi <jtalmi@gmail.com>"]

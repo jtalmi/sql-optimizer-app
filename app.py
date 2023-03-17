@@ -45,19 +45,23 @@ if "new_query" not in st.session_state:
 if "state" not in st.session_state:
     st.session_state.state = 0
 
+
 # Add input editor
-with left:
-    sql_input = st_ace(
-        value=SAMPLE_QUERY,
-        height=320,
+def _generate_editor_widget(value: str, **kwargs) -> str:
+    return st_ace(
+        value=value,
+        height=os.getenv("EDITOR_HEIGHT", 400),
         theme="monokai",
         language="sql",
-        keybinding="vscode",
-        font_size=14,
+        font_size=os.getenv("FONT_SIZE", 14),
         wrap=True,
-        min_lines=10,
         auto_update=True,
+        **kwargs,
     )
+
+
+with left:
+    sql_input = _generate_editor_widget(SAMPLE_QUERY)
 
 # Optimize and lint query
 if optimize_button:
@@ -73,18 +77,8 @@ if optimize_button:
 
 # Add output editor
 with right:
-    view_editor = st_ace(
-        value=st.session_state.new_query,
-        height=320,
-        theme="monokai",
-        language="sql",
-        keybinding="vscode",
-        font_size=14,
-        wrap=True,
-        readonly=True,
-        min_lines=10,
-        auto_update=True,
-        key=f"ace-{st.session_state.state}",
+    _generate_editor_widget(
+        st.session_state.new_query, readonly=True, key=f"ace-{st.session_state.state}"
     )
 
 st.markdown(
